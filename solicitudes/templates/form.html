@@ -1,0 +1,77 @@
+{% extends 'base.html' %}
+
+{% block contenido %}
+<form class="form-horizontal" method="POST">
+{% csrf_token %}
+<fieldset>
+
+<!-- Form Name -->
+<legend>Ingresar requerimiento</legend>
+
+<!-- Text input-->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="fechaIngreso">Fecha de solicitud</label>  
+  <div class="col-md-4">
+  <input id="fechaIngreso" name="fechaIngreso" type="date" placeholder="2017-06-14" class="form-control input-md" required="">
+    
+  </div>
+</div>
+
+<!-- Text input-->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="usuario">Usuario</label>  
+  <div class="col-md-4">
+  <input id="usuario" name="usuario" type="text" placeholder="" class="form-control input-md">
+  </div>
+</div>
+
+<!-- Textarea -->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="solicitud">Solicitud</label>
+  <div class="col-md-4">                     
+    <textarea class="form-control" id="solicitud" name="solicitud"></textarea>
+  </div>
+</div>
+
+<!-- Textarea -->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="resolucion">resolucion</label>
+  <div class="col-md-4">                     
+    <textarea class="form-control" id="resolucion" name="resolucion"></textarea>
+  </div>
+</div>
+
+<!-- Multiple Radios (inline) -->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="estado">Estado</label>
+  <div class="col-md-4"> 
+    <label class="radio-inline" for="estado-0">
+      <input type="radio" name="estado" id="estado-0" value="en avance" checked="checked">
+      En avance
+    </label> 
+    <label class="radio-inline" for="estado-1">
+      <input type="radio" name="estado" id="estado-1" value="Terminado">
+      Terminado
+    </label>
+  </div>
+</div>
+
+<!-- Text input-->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="fechaSolucion">Fecha de Solucion</label>  
+  <div class="col-md-4">
+  <input id="fechaSolucion" name="fechaSolucion" type="date" placeholder="" class="form-control input-md">
+    
+  </div>
+</div>
+
+<div class="form-group">
+  <label class="col-md-4 control-label" for="Grabar"></label>  
+  <div class="col-md-4">
+    <button id="Grabar" name="Grabar" class="btn btn-primary btn-block">Grabar</button>
+  </div>
+</div>
+
+</fieldset>
+</form>
+{% endblock contenido %}
