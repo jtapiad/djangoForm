@@ -15,9 +15,22 @@ Including another URLconf
 """
 from django.conf.urls import url
 from django.contrib import admin
-from solicitudes.views import Registrar
+from solicitudes import views
+
+# urlpatterns = [
+#     url(r'^admin/', admin.site.urls),
+#     url(r'^$', Registrar.as_view(),name="registrar"),
+#     url(r'^(?P<id>\d+)$', EditarRegistro.as_view(),name="editar"),
+#     url(r'^listado', ListadoRegistros.as_view(),name="listar"),
+#     url(r'^(?P<id>\d+)/borrar$', eliminar.as_view(),name="BorrarRegistro"),
+# ]
+
+#url class based view
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^$', Registrar.as_view(),name="registrar"),
+    url(r'^$', views.RegistroList.as_view(), name="registro_list"),
+    url(r'^crear$', views.RegistroCrear.as_view(), name="registro_crear"),
+    url(r'^edit/(?P<pk>\d+)$', views.RegistroUpdate.as_view(), name="registro_edit"),
+    url(r'^delete/(?P<pk>\d+)$', views.eliminarRegistro, name="registro_delete"),
 ]

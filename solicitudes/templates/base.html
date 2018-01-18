@@ -2,22 +2,77 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
 
-		<title>Requerimientos Magno</title>
+	<title>Requerimientos Magno</title>
 
-		<link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
-		<link rel="stylesheet" href="{% static 'css/bootstrap-theme.css' %}">
-
-		<script src="{% static 'js/bootstrap.js'%}"></script>
-
-	</head>
+	<link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+	<link rel="stylesheet" href="{% static 'css/bootstrap-theme.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'DataTables/datatables.css' %}"/>
 	
-	<body>
-		{% block contenido%}
-		{% endblock contenido%}
-	</body>
+	<script src="{% static 'js/jquery-3.2.1.js'%}"></script>
+	<script src="{% static 'js/bootstrap.js'%}"></script>
+	<script type="text/javascript" src=" {% static 'DataTables/datatables.js' %}"></script>
+	<script src="https://use.fontawesome.com/c3061281e9.js"></script>
+	
+</head>
+
+<body>
+	<nav class="navbar navbar-inverse">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<a class="navbar-brand">Registro Magno</a>
+			</div>
+			<ul class="nav navbar-nav">
+				<li id="liRegistro"><a href="/crear" id="registro">Registro</a></li>
+				<li id="liListado"><a href="/" id="listado">Listado</a></li>
+			</ul>
+		</div>
+	</nav>
+	{% block contenido%}
+	{% endblock contenido%}
+
+	<script>
+		(function(){
+			switch(window.location.pathname){
+				case "/crear":
+					var registro = document.getElementById('liRegistro');
+					var listado = document.getElementById('liListado');
+					if($(registro).hasClass('active') == false){
+						$(registro).addClass('active');
+					}
+				break;
+				case "/":
+					var registro = document.getElementById('liRegistro');
+					var listado = document.getElementById('liListado');
+					if($(listado).hasClass('active') == false){
+						$(listado).addClass('active');
+					}
+
+					$("#tablalistado").DataTable({
+						"language": {
+			                "url": '{% static "js/idioma.json" %}'
+			            },
+			            "stateSave": true,
+			            "dom": 'lfrtBip',
+			            "buttons":[{
+			            	"extend":"excelHtml5",
+			            	"text": 'Exportar a Excel <i class="fa fa-file-excel-o"></i>',
+			            	"className":"excel"
+			            }
+			            ]
+					});
+				break;
+				case "":
+				break;
+				default:
+				break;
+			}
+		})();
+
+	</script>
+</body>
 </html>
