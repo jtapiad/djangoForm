@@ -1,0 +1,75 @@
+{% extends 'base.html' %}
+{% load widget_tweaks %}
+{% load static %}
+{% block contenido %}
+<link rel="stylesheet" href="{% static 'css/form.css' %}">
+
+<form class="form-horizontal" method="POST">
+{% csrf_token %}
+<fieldset>
+
+{% if messages %}
+  {% for message in messages %}
+
+    <li{% if message.tags %}  {% if message.level == DEFAULT_MESSAGE_LEVELS.ERROR %} class="{{ message.tags }} alert alert-danger" {% else %} class="{{ message.tags }} {% endif%} alert alert-success"{% endif %}>{{ message }}</li>
+    {% endfor %}
+{% endif %}
+
+<!-- Text input-->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="fechaIngreso">Fecha de solicitud</label>  
+  <div class="col-md-4">
+    {% render_field form.fechaRequerimiento class="form-control input-md" %}
+  </div>
+</div>
+
+<div class="form-group">
+  <label class="col-md-4 control-label" for="usuario">Usuario</label>  
+  <div class="col-md-4">
+    {% render_field form.usuario class="form-control input-md" %}
+  </div>
+</div>
+
+<div class="form-group">
+  <label class="col-md-4 control-label" for="solicitud">Solicitud</label>
+  <div class="col-md-4">
+    {% render_field form.requerimiento id="solicitud" class="form-control" style="height:3em" %}
+
+  </div>
+</div>
+
+<div class="form-group">
+  <label class="col-md-4 control-label" for="resolucion">resolucion</label>
+  <div class="col-md-4">
+    {% render_field form.razonProblema id="resolucion" class="form-control" style="height:3em" %}
+  </div>
+</div>
+
+<!-- Multiple Radios (inline) -->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="estado">Estado</label>
+  <div class="col-md-4"> 
+    <label class="radio-inline" for="estado-0">
+      {{form.estado}}
+    </label> 
+  </div>
+</div>
+
+<!-- Text input-->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="fechaSolucion">Fecha de Solucion</label>  
+  <div class="col-md-4">
+    {% render_field form.fechaSolucion type="date" class="form-control input-md" id="fechaSolucion" %}
+  </div>
+</div>
+
+<div class="form-group">
+  <label class="col-md-4 control-label" for="Grabar"></label>  
+  <div class="col-md-4">
+    <button id="Grabar" name="Grabar" class="btn btn-primary btn-block">Grabar</button>
+  </div>
+</div>
+
+</fieldset>
+</form>
+{% endblock contenido %}

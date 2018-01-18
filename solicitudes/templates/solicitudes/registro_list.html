@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load widget_tweaks %}
+{% block contenido %}
+<link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+<div class="container">
+    <a  class="btn btn-primary crear" href="{% url 'registro_crear' %}" >Crear Nuevo Registro</a>
+    <form method="delete">
+        {% csrf_token %}
+    	<table class="table table-striped table-hover" id="tablalistado">
+        	<thead>
+    	      <tr>
+    	        <th>Fecha Requerimiento</th>
+    	        <th>Detalle</th>
+    	        <th>usuario</th>
+    	        <th>Problema</th>
+    	        <th>Fecha Solucion</th>
+    	        <th>Estado</th>
+    	        <th>Opciones</th>
+    	      </tr>
+        	</thead>
+        	<tbody>
+        		{% for elemento in object_list %}
+        		<tr>
+        			<td>{{elemento.fechaRequerimiento|date:"d/m/Y"}}</td>
+        			<td>{{elemento.requerimiento}}</td>
+        			<td>{{elemento.usuario}}</td>
+        			<td>{{elemento.razonProblema}}</td>
+        			<td>{{elemento.fechaSolucion|date:"d/m/Y"}}</td>
+        			<td>{{elemento.estado}}</td>
+        			<td>
+        				<a class="btn btn-primary" href="{% url 'registro_edit' elemento.id %}"><span class="glyphicon glyphicon-edit"></span></a>
+                        <a  class="btn btn-danger" href="{% url 'registro_delete' pk=elemento.id %}"><span class="glyphicon glyphicon-trash"></span></a>
+        			</td>
+        		</tr>
+    			{% endfor %}
+        	</tbody>
+    	</table>
+    </form>
+</div>
+{% endblock contenido%}

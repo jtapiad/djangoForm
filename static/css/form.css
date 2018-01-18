@@ -1,0 +1,7 @@
+.alert{
+	text-align: center!important;
+	width: fit-content!important;
+	position:relative!important;
+	transform: translateX(-50%)!important;
+	left: 50%;
+}

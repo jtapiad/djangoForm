@@ -1,0 +1,24 @@
+{
+    "decimal":        "",
+    "emptyTable":     "Sin informacion disponible",
+    "info":           " _START_ a _END_ de un total de _TOTAL_ registros",
+    "infoEmpty":      "0 a 0 de 0 registros",
+    "infoFiltered":   "(filtrados de un total de _MAX_ registros )",
+    "infoPostFix":    "",
+    "thousands":      ",",
+    "lengthMenu":     "Mostrar _MENU_ registros",
+    "loadingRecords": "Cargando...",
+    "processing":     "Trabajando...",
+    "search":         "Buscar:",
+    "zeroRecords":    "No hay coincidencias con el filtro",
+    "paginate": {
+        "first":      "Primero",
+        "last":       "Ultimo",
+        "next":       "Siguiente",
+        "previous":   "Anterior"
+    },
+    "aria": {
+        "sortAscending":  ": Ordenar Ascendente",
+        "sortDescending": ": Ordenar descendiente"
+    }
+}

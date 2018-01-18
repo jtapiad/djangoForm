@@ -1,0 +1,15 @@
+table, thead, th, tbody,tr,td{
+	text-align: center!important;
+}
+
+.crear{
+	position: absolute!important;
+	left: 50%;
+	transform: translateX(-50%);
+	z-index:1;
+}
+
+.excel{
+	background: #0e823b;
+	color:white;
+}
